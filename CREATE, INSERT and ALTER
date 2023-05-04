@@ -1,0 +1,37 @@
+#step 1: create a database called 'assignment1'
+CREATE database assignment1;
+use assignment1;
+
+#creating Employee table using CREATE function and defining data types for each variable 
+CREATE table Employee (id int, name varchar(18), age int, salary int, Deptid int); 
+#inserting values into the table using INSERT function
+INSERT into Employee values (1,"Ann",21,1000,1),(2,"Muhamad",22,1000,2),(3,"Lavanya",23,2000,1),(4,"Basith",21,2000,3),(5,"Sruthi",22,3000,4);
+#SELECT will enable to view the table
+SELECT* from Employee;
+
+#creating Dept table
+CREATE table Dept (id int, name varchar(18));
+INSERT into Dept values (1,"HR"),(2,"IT"),(3,"Admin"),(4,"Finance");
+SELECT * from Dept;
+
+#Modifying the table for Column salary in table employee can have null values
+ALTER TABLE `assignment1`.`employee`
+CHANGE COLUMN `salary` `salary` INT NULL ;
+
+#Modifying the table for Age can have decimal values
+ALTER TABLE Employee 
+modify column age decimal(8,2);
+
+#Modifying the table for the length of name should be less than 10 character
+ALTER TABLE `assignment1`.`employee` 
+CHANGE COLUMN `name` `name` VARCHAR(11) NOT NULL;
+
+#Remove column age from employee table
+ALTER table Employee
+DROP column age;
+SELECT * from Employee;
+
+#Add column description of datatype varchar (100) in table employee
+alter table Employee
+add description varchar(100);
+select * from Employee;
