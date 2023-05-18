@@ -1,0 +1,40 @@
+#let's look at how we can answer for each of the questions below:
+#####Question 1.) Modify column salary in table employee to have null values##########
+#Step 1: As usual create the tables. But if you already created the table, move to questions
+
+#creating Dept table
+create table Dept (id int, name varchar(18));
+insert into Dept values (1,"HR"),(2,"IT"),(3,"Admin"),(4,"Finance");
+select * from Dept;
+
+#creating Employee table
+create table Employee (id int, name varchar(18), age int, salary int, Deptid int);
+insert into Employee values (1,"Ann",21,1000,1),(2,"Muhamad",22,1000,2),(3,"Lavanya",23,2000,1),(4,"Basith",21,2000,3),(5,"Sruthi",22,3000,4);
+select * from Employee;
+
+#Question 1 (add primary key to ID)
+alter table Employee add primary key (id);
+
+#Question 2 (Add foreign key in Dept table)
+#Before that need to create an index on the refrenced column
+create index idx_dept_id on Dept(id);
+#now adding foreign key
+alter table Employee
+add foreign key (Deptid) references Dept(id);
+
+#Question 3
+alter table Employee
+add constraint salary_max_limit
+check (salary <=10000);
+
+#### OR for Q3 can add salary limit while creating table ###
+create table Employee (
+id int not null,
+name varchar(18), 
+age int, 
+salary int check (salary <10000), 
+Deptid int);
+
+#i will drop Employee table here as I altered it. but need to use the same employee table for assignment 3
+drop table Employee;
+drop table Dept;
