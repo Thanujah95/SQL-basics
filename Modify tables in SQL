@@ -34,7 +34,3 @@ name varchar(18),
 age int, 
 salary int check (salary <10000), 
 Deptid int);
-
-#i will drop Employee table here as I altered it. but need to use the same employee table for assignment 3
-drop table Employee;
-drop table Dept;
